@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		ED6D6CE726D56E5C00900DBC /* AsyncBluetooth in Frameworks */ = {isa = PBXBuildFile; productRef = ED6D6CE626D56E5C00900DBC /* AsyncBluetooth */; };
 		ED6D6CE926D5D38A00900DBC /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6D6CE826D5D38A00900DBC /* ScanViewModel.swift */; };
+		ED6D6CEF26D7308600900DBC /* CookbookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6D6CEE26D7308600900DBC /* CookbookView.swift */; };
 		ED8A8EED26D5644B0096E527 /* AsyncBluetoothCookbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A8EEC26D5644B0096E527 /* AsyncBluetoothCookbookApp.swift */; };
 		ED8A8EF126D5644C0096E527 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED8A8EF026D5644C0096E527 /* Assets.xcassets */; };
 		ED8A8EFE26D5644C0096E527 /* AsyncBluetoothCookbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A8EFD26D5644C0096E527 /* AsyncBluetoothCookbookTests.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		ED6D6CE826D5D38A00900DBC /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
+		ED6D6CEE26D7308600900DBC /* CookbookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookView.swift; sourceTree = "<group>"; };
 		ED8A8EE926D5644B0096E527 /* AsyncBluetoothCookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncBluetoothCookbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8A8EEC26D5644B0096E527 /* AsyncBluetoothCookbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncBluetoothCookbookApp.swift; sourceTree = "<group>"; };
 		ED8A8EF026D5644C0096E527 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,11 +81,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		ED6D6CF126D730E300900DBC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED8A8EF026D5644C0096E527 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		ED6D6CF226D7316900900DBC /* Cookbook */ = {
+			isa = PBXGroup;
+			children = (
+				ED6D6CEE26D7308600900DBC /* CookbookView.swift */,
+			);
+			path = Cookbook;
+			sourceTree = "<group>";
+		};
 		ED8A8EE026D5644B0096E527 = {
 			isa = PBXGroup;
 			children = (
 				ED8A8F1726D566FC0096E527 /* Packages */,
 				ED8A8EEB26D5644B0096E527 /* Sources */,
+				ED6D6CF126D730E300900DBC /* Resources */,
 				ED8A8EFC26D5644C0096E527 /* UnitTests */,
 				ED8A8F0626D5644C0096E527 /* UITests */,
 				ED8A8EEA26D5644B0096E527 /* Products */,
@@ -104,9 +123,9 @@
 		ED8A8EEB26D5644B0096E527 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				ED6D6CF226D7316900900DBC /* Cookbook */,
 				ED8A8F1426D564B30096E527 /* Scan */,
 				ED8A8EEC26D5644B0096E527 /* AsyncBluetoothCookbookApp.swift */,
-				ED8A8EF026D5644C0096E527 /* Assets.xcassets */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -280,6 +299,7 @@
 				ED8A8EED26D5644B0096E527 /* AsyncBluetoothCookbookApp.swift in Sources */,
 				ED6D6CE926D5D38A00900DBC /* ScanViewModel.swift in Sources */,
 				ED8A8F1626D564EE0096E527 /* ScanView.swift in Sources */,
+				ED6D6CEF26D7308600900DBC /* CookbookView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

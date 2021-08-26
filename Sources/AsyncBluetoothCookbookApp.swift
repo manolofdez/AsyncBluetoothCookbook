@@ -4,7 +4,7 @@ import SwiftUI
 struct AsyncBluetoothCookbookApp: App {
     var body: some Scene {
         WindowGroup {
-            ScanView()
+            CookbookView()
         }
     }
 }
