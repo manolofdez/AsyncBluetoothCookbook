@@ -37,6 +37,7 @@
 /* Begin PBXFileReference section */
 		ED6D6CE826D5D38A00900DBC /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
 		ED6D6CEE26D7308600900DBC /* CookbookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookView.swift; sourceTree = "<group>"; };
+		ED85B93B26E94CC300643904 /* AsyncBluetoothCookbook-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AsyncBluetoothCookbook-Info.plist"; sourceTree = "<group>"; };
 		ED8A8EE926D5644B0096E527 /* AsyncBluetoothCookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncBluetoothCookbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8A8EEC26D5644B0096E527 /* AsyncBluetoothCookbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncBluetoothCookbookApp.swift; sourceTree = "<group>"; };
 		ED8A8EF026D5644C0096E527 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		ED6D6CF126D730E300900DBC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ED85B93B26E94CC300643904 /* AsyncBluetoothCookbook-Info.plist */,
 				ED8A8EF026D5644C0096E527 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -463,8 +465,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Resources/AsyncBluetoothCookbook-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -492,8 +496,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Resources/AsyncBluetoothCookbook-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
