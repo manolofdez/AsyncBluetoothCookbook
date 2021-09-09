@@ -10,6 +10,7 @@
 		ED6D6CE726D56E5C00900DBC /* AsyncBluetooth in Frameworks */ = {isa = PBXBuildFile; productRef = ED6D6CE626D56E5C00900DBC /* AsyncBluetooth */; };
 		ED6D6CE926D5D38A00900DBC /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6D6CE826D5D38A00900DBC /* ScanViewModel.swift */; };
 		ED6D6CEF26D7308600900DBC /* CookbookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6D6CEE26D7308600900DBC /* CookbookView.swift */; };
+		ED85B93D26E96F6F00643904 /* ScanViewPeripheralListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED85B93C26E96F6F00643904 /* ScanViewPeripheralListItem.swift */; };
 		ED8A8EED26D5644B0096E527 /* AsyncBluetoothCookbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A8EEC26D5644B0096E527 /* AsyncBluetoothCookbookApp.swift */; };
 		ED8A8EF126D5644C0096E527 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED8A8EF026D5644C0096E527 /* Assets.xcassets */; };
 		ED8A8EFE26D5644C0096E527 /* AsyncBluetoothCookbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A8EFD26D5644C0096E527 /* AsyncBluetoothCookbookTests.swift */; };
@@ -38,6 +39,7 @@
 		ED6D6CE826D5D38A00900DBC /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
 		ED6D6CEE26D7308600900DBC /* CookbookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookView.swift; sourceTree = "<group>"; };
 		ED85B93B26E94CC300643904 /* AsyncBluetoothCookbook-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AsyncBluetoothCookbook-Info.plist"; sourceTree = "<group>"; };
+		ED85B93C26E96F6F00643904 /* ScanViewPeripheralListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewPeripheralListItem.swift; sourceTree = "<group>"; };
 		ED8A8EE926D5644B0096E527 /* AsyncBluetoothCookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncBluetoothCookbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8A8EEC26D5644B0096E527 /* AsyncBluetoothCookbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncBluetoothCookbookApp.swift; sourceTree = "<group>"; };
 		ED8A8EF026D5644C0096E527 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				ED8A8F1526D564EE0096E527 /* ScanView.swift */,
 				ED6D6CE826D5D38A00900DBC /* ScanViewModel.swift */,
+				ED85B93C26E96F6F00643904 /* ScanViewPeripheralListItem.swift */,
 			);
 			path = Scan;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				ED8A8EED26D5644B0096E527 /* AsyncBluetoothCookbookApp.swift in Sources */,
 				ED6D6CE926D5D38A00900DBC /* ScanViewModel.swift in Sources */,
 				ED8A8F1626D564EE0096E527 /* ScanView.swift in Sources */,
+				ED85B93D26E96F6F00643904 /* ScanViewPeripheralListItem.swift in Sources */,
 				ED6D6CEF26D7308600900DBC /* CookbookView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,7 +469,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K3RRSJA685;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Resources/AsyncBluetoothCookbook-Info.plist";
@@ -496,7 +500,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K3RRSJA685;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Resources/AsyncBluetoothCookbook-Info.plist";

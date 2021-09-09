@@ -15,8 +15,8 @@ struct ScanView: View {
                 .opacity(self.viewModel.isScanning ? 1 : 0)
 
             Spacer()
-            List(self.viewModel.peripherals, id: \.self) { peripheral in
-                Text(peripheral)
+            List(self.viewModel.peripherals, id: \.self.id) { peripheral in
+                Text(peripheral.name ?? "-")
             }
             Spacer()
             
@@ -30,9 +30,11 @@ struct ScanView: View {
             if !self.viewModel.isScanning {
                 Button("Start Scan") { self.viewModel.onStartScanButtonPressed() }
                     .font(.title2)
+                    .padding(10)
             } else {
                 Button("Stop Scan") { self.viewModel.onStopScanButtonPressed() }
                     .font(.title2)
+                    .padding(10)
             }
         }
     }
@@ -47,16 +49,21 @@ struct ScanView: View {
 }
 
 struct ScanView_Previews: PreviewProvider {
+    struct Peripheral: ScanViewPeripheralListItem {
+        let id: UUID
+        let name: String?
+    }
+    
     class MockViewModel: ScanViewModel {
         @Published private var _isScanning = false
-        @Published private var _peripherals: [String] = []
+        @Published private var _peripherals: [ScanViewPeripheralListItem] = []
         @Published private var _error: String?
         
         override var isScanning: Bool {
             self._isScanning
         }
         
-        override var peripherals: [String] {
+        override var peripherals: [ScanViewPeripheralListItem] {
             self._peripherals
         }
         
@@ -73,7 +80,11 @@ struct ScanView_Previews: PreviewProvider {
             
             self.timer?.invalidate()
             self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
-                self._peripherals.append("Item #\(self._peripherals.count + 1)")
+                let peripheral = Peripheral(
+                    id: UUID(),
+                    name: "Item #\(self._peripherals.count + 1)"
+                )
+                self._peripherals.append(peripheral)
             }
         }
         
