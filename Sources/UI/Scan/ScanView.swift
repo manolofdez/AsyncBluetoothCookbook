@@ -2,21 +2,24 @@ import SwiftUI
 import Combine
 
 struct ScanView: View {
-    
-    @ObservedObject private var viewModel: ScanViewModel
-    
+        
     var body: some View {
         VStack {
             Text("Scan Test")
                 .font(.largeTitle)
-            Text("AsyncBluetooth")
             
             ProgressView()
                 .opacity(self.viewModel.isScanning ? 1 : 0)
 
             Spacer()
             List(self.viewModel.peripherals, id: \.self.id) { peripheral in
-                Text(peripheral.name ?? "-")
+                
+                NavigationLink(
+                    peripheral.name ?? "-",
+                    destination: ConnectingView(peripheralID: peripheral.id)
+                )
+                    .font(.title2)
+                    .foregroundColor(.blue)
             }
             Spacer()
             
@@ -28,16 +31,22 @@ struct ScanView: View {
             }
             
             if !self.viewModel.isScanning {
-                Button("Start Scan") { self.viewModel.onStartScanButtonPressed() }
+                Button("Start Scan") { self.viewModel.startScan() }
                     .font(.title2)
                     .padding(10)
             } else {
-                Button("Stop Scan") { self.viewModel.onStopScanButtonPressed() }
+                Button("Stop Scan") { self.viewModel.stopScan()
+                }
                     .font(.title2)
                     .padding(10)
             }
         }
+            .onDisappear {
+                self.viewModel.stopScan()
+            }
     }
+    
+    @ObservedObject private var viewModel: ScanViewModel
     
     init() {
         self.init(viewModel: ScanViewModel())
@@ -73,7 +82,7 @@ struct ScanView_Previews: PreviewProvider {
         
         private var timer: Timer?
         
-        override func onStartScanButtonPressed() {
+        override func startScan() {
             self._isScanning = true
             
             self._peripherals.removeAll()
@@ -88,7 +97,7 @@ struct ScanView_Previews: PreviewProvider {
             }
         }
         
-        override func onStopScanButtonPressed() {
+        override func stopScan() {
             self._isScanning = false
             self.timer?.invalidate()
             self.timer = nil
@@ -96,7 +105,10 @@ struct ScanView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        ScanView(viewModel: MockViewModel())
-            .preferredColorScheme(.dark)
+        NavigationView {
+            ScanView(viewModel: MockViewModel())
+                .preferredColorScheme(.dark)
+                .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }

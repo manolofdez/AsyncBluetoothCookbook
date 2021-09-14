@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED305FEB26EBF68400B335E6 /* PeripheralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED305FEA26EBF68400B335E6 /* PeripheralView.swift */; };
+		ED305FEE26EC05DE00B335E6 /* PeripheralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED305FED26EC05DE00B335E6 /* PeripheralViewModel.swift */; };
 		ED6D6CE726D56E5C00900DBC /* AsyncBluetooth in Frameworks */ = {isa = PBXBuildFile; productRef = ED6D6CE626D56E5C00900DBC /* AsyncBluetooth */; };
 		ED6D6CE926D5D38A00900DBC /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6D6CE826D5D38A00900DBC /* ScanViewModel.swift */; };
 		ED6D6CEF26D7308600900DBC /* CookbookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6D6CEE26D7308600900DBC /* CookbookView.swift */; };
@@ -16,6 +18,12 @@
 		ED8A8EFE26D5644C0096E527 /* AsyncBluetoothCookbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A8EFD26D5644C0096E527 /* AsyncBluetoothCookbookTests.swift */; };
 		ED8A8F0826D5644C0096E527 /* AsyncBluetoothCookbookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A8F0726D5644C0096E527 /* AsyncBluetoothCookbookUITests.swift */; };
 		ED8A8F1626D564EE0096E527 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A8F1526D564EE0096E527 /* ScanView.swift */; };
+		EDAE9E4326EFC2BD0003B4F2 /* ServiceListItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAE9E4226EFC2BD0003B4F2 /* ServiceListItemRow.swift */; };
+		EDC326B926EC3A1F000681A4 /* PeripheralInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC326B826EC3A1F000681A4 /* PeripheralInfoRow.swift */; };
+		EDC326BF26EF9E27000681A4 /* ServiceListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC326BE26EF9E27000681A4 /* ServiceListItem.swift */; };
+		EDDCA4A726EBBC2E00D6FBDA /* CentralManager+Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCA4A626EBBC2E00D6FBDA /* CentralManager+Singleton.swift */; };
+		EDDCA4AB26EBBFC500D6FBDA /* ConnectingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCA4AA26EBBFC500D6FBDA /* ConnectingView.swift */; };
+		EDDCA4AD26EBC3D100D6FBDA /* ConnectingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCA4AC26EBC3D100D6FBDA /* ConnectingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED305FEA26EBF68400B335E6 /* PeripheralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralView.swift; sourceTree = "<group>"; };
+		ED305FED26EC05DE00B335E6 /* PeripheralViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralViewModel.swift; sourceTree = "<group>"; };
 		ED6D6CE826D5D38A00900DBC /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
 		ED6D6CEE26D7308600900DBC /* CookbookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookView.swift; sourceTree = "<group>"; };
 		ED85B93B26E94CC300643904 /* AsyncBluetoothCookbook-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AsyncBluetoothCookbook-Info.plist"; sourceTree = "<group>"; };
@@ -49,6 +59,12 @@
 		ED8A8F0726D5644C0096E527 /* AsyncBluetoothCookbookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncBluetoothCookbookUITests.swift; sourceTree = "<group>"; };
 		ED8A8F1526D564EE0096E527 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		ED8A8F1826D566FC0096E527 /* AsyncBluetooth */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AsyncBluetooth; path = ../AsyncBluetooth; sourceTree = "<group>"; };
+		EDAE9E4226EFC2BD0003B4F2 /* ServiceListItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListItemRow.swift; sourceTree = "<group>"; };
+		EDC326B826EC3A1F000681A4 /* PeripheralInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralInfoRow.swift; sourceTree = "<group>"; };
+		EDC326BE26EF9E27000681A4 /* ServiceListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListItem.swift; sourceTree = "<group>"; };
+		EDDCA4A626EBBC2E00D6FBDA /* CentralManager+Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CentralManager+Singleton.swift"; sourceTree = "<group>"; };
+		EDDCA4AA26EBBFC500D6FBDA /* ConnectingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectingView.swift; sourceTree = "<group>"; };
+		EDDCA4AC26EBC3D100D6FBDA /* ConnectingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +93,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED305FE926EBF62A00B335E6 /* Peripheral */ = {
+			isa = PBXGroup;
+			children = (
+				EDC326B826EC3A1F000681A4 /* PeripheralInfoRow.swift */,
+				ED305FEA26EBF68400B335E6 /* PeripheralView.swift */,
+				ED305FED26EC05DE00B335E6 /* PeripheralViewModel.swift */,
+				EDC326BE26EF9E27000681A4 /* ServiceListItem.swift */,
+				EDAE9E4226EFC2BD0003B4F2 /* ServiceListItemRow.swift */,
+			);
+			path = Peripheral;
+			sourceTree = "<group>";
+		};
+		ED305FEC26EBF69300B335E6 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EDDCA4A926EBBD1A00D6FBDA /* Connecting */,
+				ED6D6CF226D7316900900DBC /* Cookbook */,
+				ED305FE926EBF62A00B335E6 /* Peripheral */,
+				ED8A8F1426D564B30096E527 /* Scan */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		ED6D6CE526D56E5C00900DBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,8 +166,8 @@
 		ED8A8EEB26D5644B0096E527 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				ED6D6CF226D7316900900DBC /* Cookbook */,
-				ED8A8F1426D564B30096E527 /* Scan */,
+				EDDCA4A826EBBC7F00D6FBDA /* Extensions */,
+				ED305FEC26EBF69300B335E6 /* UI */,
 				ED8A8EEC26D5644B0096E527 /* AsyncBluetoothCookbookApp.swift */,
 			);
 			path = Sources;
@@ -166,6 +205,23 @@
 				ED8A8F1826D566FC0096E527 /* AsyncBluetooth */,
 			);
 			name = Packages;
+			sourceTree = "<group>";
+		};
+		EDDCA4A826EBBC7F00D6FBDA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EDDCA4A626EBBC2E00D6FBDA /* CentralManager+Singleton.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EDDCA4A926EBBD1A00D6FBDA /* Connecting */ = {
+			isa = PBXGroup;
+			children = (
+				EDDCA4AA26EBBFC500D6FBDA /* ConnectingView.swift */,
+				EDDCA4AC26EBC3D100D6FBDA /* ConnectingViewModel.swift */,
+			);
+			path = Connecting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,11 +357,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDC326B926EC3A1F000681A4 /* PeripheralInfoRow.swift in Sources */,
+				EDDCA4AD26EBC3D100D6FBDA /* ConnectingViewModel.swift in Sources */,
 				ED8A8EED26D5644B0096E527 /* AsyncBluetoothCookbookApp.swift in Sources */,
 				ED6D6CE926D5D38A00900DBC /* ScanViewModel.swift in Sources */,
+				EDC326BF26EF9E27000681A4 /* ServiceListItem.swift in Sources */,
+				EDDCA4AB26EBBFC500D6FBDA /* ConnectingView.swift in Sources */,
 				ED8A8F1626D564EE0096E527 /* ScanView.swift in Sources */,
 				ED85B93D26E96F6F00643904 /* ScanViewPeripheralListItem.swift in Sources */,
 				ED6D6CEF26D7308600900DBC /* CookbookView.swift in Sources */,
+				EDDCA4A726EBBC2E00D6FBDA /* CentralManager+Singleton.swift in Sources */,
+				EDAE9E4326EFC2BD0003B4F2 /* ServiceListItemRow.swift in Sources */,
+				ED305FEB26EBF68400B335E6 /* PeripheralView.swift in Sources */,
+				ED305FEE26EC05DE00B335E6 /* PeripheralViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
