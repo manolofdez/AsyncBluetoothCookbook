@@ -23,7 +23,9 @@ class ScanViewModel: ObservableObject {
                 
                 let peripheralScanDataList = try self.centralManager.scanForPeripherals(withServices: nil)
                 for await peripheralScanData in peripheralScanDataList {
-                    guard !self.peripherals.contains(where: { $0.id == peripheralScanData.peripheral.id }) else {
+                    guard !self.peripherals.contains(
+                        where: { $0.identifier == peripheralScanData.peripheral.identifier }
+                    ) else {
                         return
                     }
                     DispatchQueue.main.async {

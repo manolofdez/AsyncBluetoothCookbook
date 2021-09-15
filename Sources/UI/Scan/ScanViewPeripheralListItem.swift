@@ -2,7 +2,7 @@ import Foundation
 import AsyncBluetooth
 
 protocol ScanViewPeripheralListItem {
-    var id: UUID { get }
+    var identifier: UUID { get }
     var name: String? { get }
 }
 

@@ -45,9 +45,9 @@ class PeripheralViewModel: ObservableObject {
             for service in peripheral.discoveredServices ?? [] {
                 try await peripheral.discoverCharacteristics(nil, for: service)
                 
-                guard let serviceUUID = UUID(uuidString: service.id.uuidString) else { return }
+                guard let serviceUUID = UUID(uuidString: service.uuid.uuidString) else { return }
                 let characteristics = service.discoveredCharacteristics?.map {
-                    "\($0.id)"
+                    "\($0.uuid)"
                 }.joined(separator: ", ") ?? "-"
                 self.services.append(ServiceListItem(id: serviceUUID, characteristics: characteristics))
             }
