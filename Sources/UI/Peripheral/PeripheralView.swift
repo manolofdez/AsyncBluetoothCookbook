@@ -5,6 +5,10 @@ struct PeripheralView: View {
     
     var body: some View {
         VStack {
+            Text("Info")
+                .font(.title)
+                .padding(.top, 20)
+
             VStack(spacing: 0) {
                 PeripheralInfoRow(title: "Name", value: self.viewModel.name)
                 Divider()
@@ -21,23 +25,20 @@ struct PeripheralView: View {
             Text("Services")
                 .font(.title)
                 .padding(.top, 20)
-            if self.viewModel.isDiscovering {
-                ProgressView()
-            } else {
-                VStack(spacing: 0) {
-                    ForEach(self.viewModel.services) { service in
-                        VStack {
-                            ServiceListItemRow(item: service)
-                            Divider()
-                        }
+            VStack(spacing: 0) {
+                ForEach(self.viewModel.services) { service in
+                    VStack {
+                        ServiceListItemRow(item: service)
+                        Divider()
                     }
                 }
-                    .background(.white.opacity(0.1))
-                    .cornerRadius(8)
             }
+                .background(.white.opacity(0.1))
+                .cornerRadius(8)
             Spacer()
         }
             .navigationTitle("Peripheral")
+            .navigationBarBackButtonHidden(true)
     }
     
     @ObservedObject private var viewModel: PeripheralViewModel
@@ -48,7 +49,6 @@ struct PeripheralView: View {
     
     fileprivate init(viewModel: PeripheralViewModel) {
         self.viewModel = viewModel
-        self.viewModel.discoverServices()
     }
 }
 
@@ -58,7 +58,7 @@ struct PeripheralInformationView_Previews: PreviewProvider {
             [
                 ServiceListItem(
                     id: UUID(),
-                    characteristics: "char1, char2"
+                    characteristics: "\(UUID()), \(UUID()), \(UUID())"
                 ),
                 ServiceListItem(
                     id: UUID(),
@@ -66,8 +66,6 @@ struct PeripheralInformationView_Previews: PreviewProvider {
                 ),
             ]
         }
-        
-        override func discoverServices() {}
     }
     
     static var previews: some View {

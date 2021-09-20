@@ -14,7 +14,7 @@ struct ServiceListItemRow: View {
                     .fontWeight(.bold)
             }
             Divider()
-            HStack {
+            HStack(alignment: .top) {
                 Text("Characteristics")
                 Spacer()
                 Text(item.characteristics)

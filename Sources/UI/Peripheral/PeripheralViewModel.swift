@@ -4,8 +4,22 @@ import CoreBluetooth
 
 class PeripheralViewModel: ObservableObject {
 
-    @Published private(set) var isDiscovering = false
-    @Published private(set) var services: [ServiceListItem] = []
+    var services: [ServiceListItem] {
+        guard let peripheral = self.peripheral else { return [] }
+        
+        var services = [ServiceListItem]()
+        
+        for service in peripheral.discoveredServices ?? [] {
+            guard let serviceUUID = UUID(uuidString: service.uuid.uuidString) else { return [] }
+            let characteristics = service.discoveredCharacteristics?.map {
+                "\($0.uuid)"
+            }.joined(separator: ", ") ?? "-"
+            
+            services.append(ServiceListItem(id: serviceUUID, characteristics: characteristics))
+        }
+        
+        return services
+    }
     
     var name: String {
         self.peripheral?.name ?? "-"
@@ -20,44 +34,16 @@ class PeripheralViewModel: ObservableObject {
     }
     
     private let centralManager: CentralManager
-    private let peripheral: Peripheral?
+    private let peripheralID: UUID
+    private var peripheral: Peripheral? {
+        centralManager.retrievePeripherals(withIdentifiers: [peripheralID]).first
+    }
     
     init(peripheralID: UUID, centralManager: CentralManager = CentralManager.shared) {
         self.centralManager = centralManager
-        self.peripheral = centralManager.retrievePeripherals(withIdentifiers: [peripheralID]).first
+        self.peripheralID = peripheralID
     }
-    
-    func discoverServices() {
-        self.isDiscovering = true
-        self.services.removeAll()
         
-        Task {
-            self.discoverServices()
-        }
-    }
-    
-    private func discoverServices() async {
-        guard let peripheral = self.peripheral else { return }
-        
-        do {
-            try await peripheral.discoverServices(nil)
-            
-            for service in peripheral.discoveredServices ?? [] {
-                try await peripheral.discoverCharacteristics(nil, for: service)
-                
-                guard let serviceUUID = UUID(uuidString: service.uuid.uuidString) else { return }
-                let characteristics = service.discoveredCharacteristics?.map {
-                    "\($0.uuid)"
-                }.joined(separator: ", ") ?? "-"
-                self.services.append(ServiceListItem(id: serviceUUID, characteristics: characteristics))
-            }
-        } catch { return }
-        
-        DispatchQueue.main.async {
-            self.isDiscovering = false
-        }
-    }
-    
     private static func descriptionOfState(_ state: CBPeripheralState) -> String {
         switch state {
         case .connected:

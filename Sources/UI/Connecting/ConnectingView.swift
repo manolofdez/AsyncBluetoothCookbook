@@ -1,15 +1,15 @@
 import SwiftUI
+import Combine
 
 struct ConnectingView: View {
-        
+    
     var body: some View {
         VStack {
             NavigationLink(
                 "",
                 destination: PeripheralView(peripheralID: self.viewModel.peripheralID),
-                isActive: self.$viewModel.isConnected
+                isActive: self.$showPeripheralView
             )
-            
             Spacer()
             Text("Connecting")
                 .font(.largeTitle)
@@ -31,10 +31,16 @@ struct ConnectingView: View {
                 .padding(10)
         }
             .navigationBarBackButtonHidden(true)
+            .onAppear {
+                self.onDidAppear()
+            }
     }
     
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject private var viewModel: ConnectingViewModel
+    @State private var showPeripheralView = false
+        
+    @State private var cancellableBag = Set<AnyCancellable>()
     
     init(peripheralID: UUID) {
         let viewModel = ConnectingViewModel(peripheralID: peripheralID)
@@ -43,12 +49,24 @@ struct ConnectingView: View {
     
     fileprivate init(viewModel: ConnectingViewModel) {
         self.viewModel = viewModel
-        self.viewModel.connect()
     }
     
     private func onCancelTapped() {
         self.viewModel.cancel()
         self.presentationMode.wrappedValue.dismiss()
+    }
+    
+    private func onDidAppear() {
+        self.viewModel.$isConnected
+            .sink { _ in
+                // Note we trigger async because the view model publishes before changes happen
+                DispatchQueue.main.async {
+                    self.showPeripheralView = self.viewModel.isConnected
+                }
+            }
+            .store(in: &self.cancellableBag)
+
+        self.viewModel.connect()
     }
 }
 

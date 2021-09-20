@@ -3,14 +3,15 @@ import AsyncBluetooth
 
 class ConnectingViewModel: ObservableObject {
     let peripheralID: UUID
-    private let centralManager: CentralManager
 
-    @Published var isConnected = false
+    @Published private(set) var isConnected = false
     @Published private(set) var error: String?
     
-    private var peripheral: Peripheral? {
+    private let centralManager: CentralManager
+    
+    private lazy var peripheral: Peripheral? = {
         self.centralManager.retrievePeripherals(withIdentifiers: [self.peripheralID]).first
-    }
+    }()
     
     init(peripheralID: UUID, centralManager: CentralManager = CentralManager.shared) {
         self.peripheralID = peripheralID
@@ -24,7 +25,17 @@ class ConnectingViewModel: ObservableObject {
         }
         Task {
             do {
+                if self.centralManager.isScanning {
+                    self.centralManager.stopScan()
+                }
+                
                 try await self.centralManager.connect(peripheral)
+                
+                try await peripheral.discoverServices(nil)
+                
+                for service in peripheral.discoveredServices ?? [] {
+                    try await peripheral.discoverCharacteristics(nil, for: service)
+                }
 
                 DispatchQueue.main.async {
                     self.isConnected = true
