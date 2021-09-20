@@ -15,7 +15,7 @@ struct ScanView: View {
             List(self.viewModel.peripherals, id: \.self.identifier) { peripheral in
                 
                 NavigationLink(
-                    peripheral.name ?? "-",
+                    peripheral.name,
                     destination: ConnectingView(peripheralID: peripheral.identifier)
                 )
                     .font(.title2)
@@ -58,10 +58,6 @@ struct ScanView: View {
 }
 
 struct ScanView_Previews: PreviewProvider {
-    struct Peripheral: ScanViewPeripheralListItem {
-        let identifier: UUID
-        let name: String?
-    }
     
     class MockViewModel: ScanViewModel {
         @Published private var _isScanning = false
@@ -89,7 +85,7 @@ struct ScanView_Previews: PreviewProvider {
             
             self.timer?.invalidate()
             self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
-                let peripheral = Peripheral(
+                let peripheral = ScanViewPeripheralListItem(
                     identifier: UUID(),
                     name: "Item #\(self._peripherals.count + 1)"
                 )

@@ -1,9 +1,7 @@
 import Foundation
 import AsyncBluetooth
 
-protocol ScanViewPeripheralListItem {
-    var identifier: UUID { get }
-    var name: String? { get }
+struct ScanViewPeripheralListItem {
+    let identifier: UUID
+    let name: String
 }
-
-extension Peripheral: ScanViewPeripheralListItem {}

@@ -23,13 +23,16 @@ class ScanViewModel: ObservableObject {
                 
                 let peripheralScanDataList = try self.centralManager.scanForPeripherals(withServices: nil)
                 for await peripheralScanData in peripheralScanDataList {
-                    guard !self.peripherals.contains(
-                        where: { $0.identifier == peripheralScanData.peripheral.identifier }
-                    ) else {
-                        return
-                    }
+                    let identifier = peripheralScanData.peripheral.identifier
+                    guard !self.peripherals.contains(where: { $0.identifier == identifier }) else { continue }
+                    
+                    let name = peripheralScanData.peripheral.name
+                        ?? peripheralScanData.advertisementData["kCBAdvDataLocalName"] as? String
+                        ?? "-"
+                    
+                    let peripheral = ScanViewPeripheralListItem(identifier: identifier, name:  name)
                     DispatchQueue.main.async {
-                        self.peripherals.append(peripheralScanData.peripheral)
+                        self.peripherals.append(peripheral)
                     }
                 }
             } catch {
@@ -42,7 +45,9 @@ class ScanViewModel: ObservableObject {
     }
     
     func stopScan() {
-        self.centralManager.stopScan()
+        if self.centralManager.isScanning {
+            self.centralManager.stopScan()
+        }
         
         self.isScanning = false
     }
