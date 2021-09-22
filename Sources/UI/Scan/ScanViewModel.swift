@@ -21,13 +21,13 @@ class ScanViewModel: ObservableObject {
             do {
                 try await self.centralManager.waitUntilReady()
                 
-                let peripheralScanDataList = try self.centralManager.scanForPeripherals(withServices: nil)
-                for await peripheralScanData in peripheralScanDataList {
-                    let identifier = peripheralScanData.peripheral.identifier
+                let scanDataStream = try await self.centralManager.scanForPeripherals(withServices: nil)
+                for await scanData in scanDataStream {
+                    let identifier = scanData.peripheral.identifier
                     guard !self.peripherals.contains(where: { $0.identifier == identifier }) else { continue }
                     
-                    let name = peripheralScanData.peripheral.name
-                        ?? peripheralScanData.advertisementData["kCBAdvDataLocalName"] as? String
+                    let name = scanData.peripheral.name
+                        ?? scanData.advertisementData["kCBAdvDataLocalName"] as? String
                         ?? "-"
                     
                     let peripheral = ScanViewPeripheralListItem(identifier: identifier, name:  name)
@@ -45,10 +45,12 @@ class ScanViewModel: ObservableObject {
     }
     
     func stopScan() {
-        if self.centralManager.isScanning {
-            self.centralManager.stopScan()
+        Task {
+            if self.centralManager.isScanning {
+                await self.centralManager.stopScan()
+            }
+            
+            self.isScanning = false
         }
-        
-        self.isScanning = false
     }
 }

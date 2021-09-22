@@ -26,7 +26,7 @@ class ConnectingViewModel: ObservableObject {
         Task {
             do {
                 if self.centralManager.isScanning {
-                    self.centralManager.stopScan()
+                    await self.centralManager.stopScan()
                 }
                 
                 try await self.centralManager.connect(peripheral)
