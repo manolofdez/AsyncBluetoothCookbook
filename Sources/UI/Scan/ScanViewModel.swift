@@ -50,7 +50,9 @@ class ScanViewModel: ObservableObject {
                 await self.centralManager.stopScan()
             }
             
-            self.isScanning = false
+            DispatchQueue.main.async {
+                self.isScanning = false
+            }
         }
     }
 }
