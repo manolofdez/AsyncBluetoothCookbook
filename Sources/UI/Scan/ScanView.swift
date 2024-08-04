@@ -85,11 +85,15 @@ struct ScanView_Previews: PreviewProvider {
             
             self.timer?.invalidate()
             self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
-                let peripheral = ScanViewPeripheralListItem(
-                    identifier: UUID(),
-                    name: "Item #\(self._peripherals.count + 1)"
-                )
-                self._peripherals.append(peripheral)
+                Task { [weak self] in
+                    guard let self else { return }
+                    
+                    let peripheral = ScanViewPeripheralListItem(
+                        identifier: UUID(),
+                        name: "Item #\(await self._peripherals.count + 1)"
+                    )
+                    await self.appendPeripheral(peripheral)
+                }
             }
         }
         
@@ -97,6 +101,10 @@ struct ScanView_Previews: PreviewProvider {
             self._isScanning = false
             self.timer?.invalidate()
             self.timer = nil
+        }
+        
+        private func appendPeripheral(_ peripheral: ScanViewPeripheralListItem) {
+            self._peripherals.append(peripheral)
         }
     }
     

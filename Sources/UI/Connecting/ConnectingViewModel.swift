@@ -1,6 +1,7 @@
 import Foundation
 import AsyncBluetooth
 
+@MainActor
 class ConnectingViewModel: ObservableObject {
     let peripheralID: UUID
 
@@ -23,13 +24,13 @@ class ConnectingViewModel: ObservableObject {
             self.error = "Unknown peripheral. Did you forget to scan?"
             return
         }
-        Task {
+        Task { @MainActor [centralManager] in
             do {
-                if self.centralManager.isScanning {
-                    await self.centralManager.stopScan()
+                if await centralManager.isScanning {
+                    await centralManager.stopScan()
                 }
                 
-                try await self.centralManager.connect(peripheral)
+                try await centralManager.connect(peripheral)
                 
                 try await peripheral.discoverServices(nil)
                 
@@ -37,13 +38,9 @@ class ConnectingViewModel: ObservableObject {
                     try await peripheral.discoverCharacteristics(nil, for: service)
                 }
 
-                DispatchQueue.main.async {
-                    self.isConnected = true
-                }
+                self.isConnected = true
             } catch {
-                DispatchQueue.main.async {
-                    self.error = error.localizedDescription
-                }
+                self.error = error.localizedDescription
             }
         }
     }

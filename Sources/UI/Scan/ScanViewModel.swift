@@ -1,6 +1,7 @@
 import Foundation
 import AsyncBluetooth
 
+@MainActor
 class ScanViewModel: ObservableObject {
     private let centralManager: CentralManager
     
@@ -17,11 +18,11 @@ class ScanViewModel: ObservableObject {
         self.peripherals.removeAll()
         self.isScanning = true
         
-        Task {
+        Task { @MainActor [centralManager] in
             do {
-                try await self.centralManager.waitUntilReady()
+                try await centralManager.waitUntilReady()
                 
-                let scanDataStream = try await self.centralManager.scanForPeripherals(withServices: nil)
+                let scanDataStream = try await centralManager.scanForPeripherals(withServices: nil)
                 for await scanData in scanDataStream {
                     let identifier = scanData.peripheral.identifier
                     guard !self.peripherals.contains(where: { $0.identifier == identifier }) else { continue }
@@ -31,22 +32,19 @@ class ScanViewModel: ObservableObject {
                         ?? "-"
                     
                     let peripheral = ScanViewPeripheralListItem(identifier: identifier, name:  name)
-                    DispatchQueue.main.async {
-                        self.peripherals.append(peripheral)
-                    }
+                    
+                    self.peripherals.append(peripheral)
                 }
             } catch {
-                DispatchQueue.main.async {
-                    self.error = error.localizedDescription
-                    self.isScanning = false
-                }
+                self.error = error.localizedDescription
+                self.isScanning = false
             }
         }
     }
     
     func stopScan() {
         Task {
-            if self.centralManager.isScanning {
+            if await self.centralManager.isScanning {
                 await self.centralManager.stopScan()
             }
             
